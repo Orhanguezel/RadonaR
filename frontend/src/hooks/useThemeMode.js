@@ -1,20 +1,29 @@
-import { useState, useEffect } from 'react'
-import { themes } from '@/styles/theme'
+import { useState, useEffect } from 'react';
+import { themes } from '@/styles/themes'; 
 
 export const useThemeMode = () => {
-  const [theme, setTheme] = useState(themes.light)
+  const [theme, setTheme] = useState(themes.light);
+  const [themeName, setThemeName] = useState('light');
 
   useEffect(() => {
-    const savedThemeName = localStorage.getItem('theme') || 'light'
-    setTheme(themes[savedThemeName])
-  }, [])
-
-  const changeTheme = (themeName) => {
-    if (themes[themeName]) {
-      setTheme(themes[themeName])
-      localStorage.setItem('theme', themeName)
+    const savedThemeName = localStorage.getItem('theme') || 'light';
+    if (themes[savedThemeName]) {
+      setTheme(themes[savedThemeName]);
+      setThemeName(savedThemeName);
+    } else {
+      // fallback
+      setTheme(themes.light);
+      setThemeName('light');
     }
-  }
+  }, []);
 
-  return { theme, changeTheme }
-}
+  const changeTheme = (newThemeName) => {
+    if (themes[newThemeName]) {
+      setTheme(themes[newThemeName]);
+      setThemeName(newThemeName);
+      localStorage.setItem('theme', newThemeName);
+    }
+  };
+
+  return { theme, themeName, changeTheme };
+};

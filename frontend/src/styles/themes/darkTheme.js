@@ -1,0 +1,76 @@
+import { sharedTheme } from "@/styles/sharedTheme";
+
+const darkTheme = {
+  templateName: "dark",
+  ...sharedTheme,
+  colors: {
+    background: "#121212",
+    backgroundSecondary: "#1e1e1e",
+    backgroundAlt: "#181818",
+    sectionBackground: "#1a1a1a",
+    inputBackground: "#1e1e1e",
+    overlayStart: "rgba(0, 0, 0, 0.3)",
+    overlayEnd: "rgba(0, 0, 0, 0.95)",
+    text: "#e0e0e0",
+    textAlt: "#cfcfcf",
+    textSecondary: "#999999",
+    textPrimary: "#ffffff",
+    primary: "#0d6efd",
+    primaryLight: "#2b6ff0",
+    primaryHover: "#0b5ed7",
+    primaryDark: "#084298",
+    primaryTransparent: "rgba(13, 110, 253, 0.1)",
+    skeletonBackground: "#2c2c2c",
+    overlayBackground: "rgba(0, 0, 0, 0.7)",
+    accent: "#17a2b8",
+    secondary: "#6c757d",
+    border: "#343a40",
+    cardBackground: "#1e1e1e",
+    buttonBackground: "#0d6efd",
+    buttonText: "#ffffff",
+    link: "#0d6efd",
+    linkHover: "#0a58ca",
+    hoverBackground: "#2a2a2a",
+    whiteColor: "#ffffff",
+    darkColor: "#000000",
+    success: "#198754",
+    warning: "#ffc107",
+    danger: "#dc3545",
+    error: "#dc3545",
+    info: "#0dcaf0",
+    muted: "#6c757d",
+    disabled: "#3a3a3a"
+  },
+  buttons: {
+    primary: {
+      background: "#0d6efd",
+      backgroundHover: "#0b5ed7",
+      text: "#ffffff",
+      textHover: "#ffffff",
+    },
+    secondary: {
+      background: "#343a40",
+      backgroundHover: "#495057",
+      text: "#e0e0e0",
+      textHover: "#ffffff",
+    },
+    danger: {
+      background: "#dc3545",
+      backgroundHover: "#bb2d3b",
+      text: "#ffffff",
+      textHover: "#ffffff",
+    },
+  },
+  inputs: {
+    background: "#1e1e1e",
+    border: "#343a40",
+    text: "#e0e0e0",
+    placeholder: "#6c757d",
+  },
+  cards: {
+    background: "#1e1e1e",
+    hoverBackground: "#2a2a2a",
+  },
+};
+
+export default darkTheme;

@@ -1,0 +1,76 @@
+import { sharedTheme } from "@/styles/sharedTheme";
+
+const retroTheme = {
+  templateName: "retro",
+  ...sharedTheme,
+  colors: {
+    background: "#fefae0",
+    backgroundSecondary: "#f5f0c9",
+    backgroundAlt: "#fff7cc",
+    sectionBackground: "#fefae0",
+    inputBackground: "#fff7cc",
+    overlayStart: "rgba(255, 250, 224, 0.6)",
+    overlayEnd: "rgba(255, 250, 224, 0.95)",
+    text: "#606c38",
+    textAlt: "#283618",
+    textSecondary: "#7f7f54",
+    textPrimary: "#bc6c25",
+    primary: "#bc6c25",
+    primaryLight: "#e6b07d",
+    primaryHover: "#a55b1e",
+    primaryDark: "#7c3e12",
+    primaryTransparent: "rgba(188, 108, 37, 0.1)",
+    skeletonBackground: "#e0d4b7",
+    overlayBackground: "rgba(188, 108, 37, 0.5)",
+    accent: "#dda15e",
+    secondary: "#dda15e",
+    border: "#283618",
+    cardBackground: "#fff7cc",
+    buttonBackground: "#bc6c25",
+    buttonText: "#ffffff",
+    link: "#bc6c25",
+    linkHover: "#a55b1e",
+    hoverBackground: "#f5f0c9",
+    whiteColor: "#ffffff",
+    darkColor: "#000000",
+    success: "#81b29a",
+    warning: "#f2cc8f",
+    danger: "#e07a5f",
+    error: "#e07a5f",
+    info: "#3d405b",
+    muted: "#b7b7a4",
+    disabled: "#d6cfc7"
+  },
+  buttons: {
+    primary: {
+      background: "#bc6c25",
+      backgroundHover: "#a55b1e",
+      text: "#ffffff",
+      textHover: "#ffffff",
+    },
+    secondary: {
+      background: "#dda15e",
+      backgroundHover: "#c68d4d",
+      text: "#283618",
+      textHover: "#000000",
+    },
+    danger: {
+      background: "#e07a5f",
+      backgroundHover: "#d1654b",
+      text: "#ffffff",
+      textHover: "#ffffff",
+    },
+  },
+  inputs: {
+    background: "#fff7cc",
+    border: "#bc6c25",
+    text: "#606c38",
+    placeholder: "#7f7f54",
+  },
+  cards: {
+    background: "#fff7cc",
+    hoverBackground: "#f5f0c9",
+  },
+};
+
+export default retroTheme;

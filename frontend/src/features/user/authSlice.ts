@@ -1,32 +1,52 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { apiCall } from "@/api/apiCall";
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import apiCall from "@/lib/apiCall";
+import { fetchCurrentUser } from "./accountSlice";
 
-// Initial State
-const initialState = {
+export interface AuthUser {
+  _id: string;
+  name: string;
+  email: string;
+  role: "admin" | "user" | "moderator" | "staff" | "customer";
+  profileImage: string;
+}
+
+interface AuthState {
+  user: AuthUser | null;
+  loading: boolean;
+  error: string | null;
+  successMessage: string | null;
+}
+
+interface LoginPayload {
+  email: string;
+  password: string;
+}
+
+interface RegisterPayload {
+  name: string;
+  email: string;
+  password: string;
+  recaptchaToken: string;
+}
+
+const initialState: AuthState = {
   user: null,
   loading: false,
   error: null,
   successMessage: null,
-  isAuthenticated: false,
 };
 
 // 🔐 Login
 export const loginUser = createAsyncThunk(
   "auth/loginUser",
-  async (data, thunkAPI) => {
+  async (data: LoginPayload, thunkAPI) => {
     try {
-      const res = await apiCall({
-        url: "/users/login",
-        method: "post",
-        data,
-      });
-      // Fetch current user after login
-      await thunkAPI.dispatch(fetchCurrentUser()).unwrap();
+      const res = await apiCall("post", "/users/login", data, thunkAPI.rejectWithValue);
+      const user = await thunkAPI.dispatch(fetchCurrentUser()).unwrap();
+      thunkAPI.dispatch(setAuthUser(user));
       return res;
     } catch (error) {
-      return thunkAPI.rejectWithValue(
-        error?.message || "Login failed."
-      );
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -34,17 +54,13 @@ export const loginUser = createAsyncThunk(
 // 📝 Register
 export const registerUser = createAsyncThunk(
   "auth/registerUser",
-  async (formData, thunkAPI) => {
+  async (formData: RegisterPayload, thunkAPI) => {
     try {
-      const res = await apiCall({
-        url: "/users/register",
-        method: "post",
-        data: formData,
-      });
-      return { message: res.message || "Registration successful." };
-    } catch (error) {
+      const res = await apiCall("post", "/users/register", formData, thunkAPI.rejectWithValue);
+      return { message: res.message || "Registration successful" };
+    } catch (err: any) {
       return thunkAPI.rejectWithValue(
-        error?.message || "Registration failed."
+        err?.response?.data?.message || "Registration failed"
       );
     }
   }
@@ -53,17 +69,13 @@ export const registerUser = createAsyncThunk(
 // 🔐 Change password
 export const changePassword = createAsyncThunk(
   "auth/changePassword",
-  async (data, thunkAPI) => {
+  async (data: { currentPassword: string; newPassword: string }, thunkAPI) => {
     try {
-      const res = await apiCall({
-        url: "/account/me/password",
-        method: "put",
-        data,
-      });
+      const res = await apiCall("put", "/account/me/password", data, thunkAPI.rejectWithValue);
       return { message: res.message || "Password changed successfully." };
-    } catch (error) {
+    } catch (err: any) {
       return thunkAPI.rejectWithValue(
-        error?.message || "Password change failed."
+        err?.response?.data?.message || "Password change failed"
       );
     }
   }
@@ -72,17 +84,18 @@ export const changePassword = createAsyncThunk(
 // 🔑 Reset password
 export const resetPassword = createAsyncThunk(
   "auth/resetPassword",
-  async (data, thunkAPI) => {
+  async (data: { token: string; newPassword: string }, thunkAPI) => {
     try {
-      const res = await apiCall({
-        url: `/users/reset-password/${data.token}`,
-        method: "post",
-        data: { newPassword: data.newPassword },
-      });
+      const res = await apiCall(
+        "post",
+        `/users/reset-password/${data.token}`,
+        { newPassword: data.newPassword },
+        thunkAPI.rejectWithValue
+      );
       return { message: res.message || "Password reset successfully." };
-    } catch (error) {
+    } catch (error: any) {
       return thunkAPI.rejectWithValue(
-        error?.message || "Reset password failed."
+        error?.response?.data?.message || "Reset password failed"
       );
     }
   }
@@ -91,17 +104,13 @@ export const resetPassword = createAsyncThunk(
 // ❓ Forgot Password
 export const forgotPassword = createAsyncThunk(
   "auth/forgotPassword",
-  async (data, thunkAPI) => {
+  async (data: { email: string }, thunkAPI) => {
     try {
-      const res = await apiCall({
-        url: "/users/forgot-password",
-        method: "post",
-        data,
-      });
+      const res = await apiCall("post", "/users/forgot-password", data, thunkAPI.rejectWithValue);
       return { message: res.message || "Reset email sent." };
-    } catch (error) {
+    } catch (error: any) {
       return thunkAPI.rejectWithValue(
-        error?.message || "Forgot password failed."
+        error?.response?.data?.message || "Forgot password failed"
       );
     }
   }
@@ -112,32 +121,11 @@ export const logoutUser = createAsyncThunk(
   "auth/logoutUser",
   async (_, thunkAPI) => {
     try {
-      const res = await apiCall({
-        url: "/users/logout",
-        method: "post",
-      });
+      const res = await apiCall("post", "/users/logout", null, thunkAPI.rejectWithValue);
       return { message: res.message || "Logged out successfully." };
-    } catch (error) {
+    } catch (error: any) {
       return thunkAPI.rejectWithValue(
-        error?.message || "Logout failed."
-      );
-    }
-  }
-);
-
-// 👤 Fetch Current User
-export const fetchCurrentUser = createAsyncThunk(
-  "auth/fetchCurrentUser",
-  async (_, thunkAPI) => {
-    try {
-      const res = await apiCall({
-        url: "/account/me",
-        method: "get",
-      });
-      return res?.user || res; // Beklediğin yapıya göre ayarlayabilirsin
-    } catch (error) {
-      return thunkAPI.rejectWithValue(
-        error?.message || "Failed to fetch user."
+        error?.response?.data?.message || "Logout failed"
       );
     }
   }
@@ -152,25 +140,23 @@ const authSlice = createSlice({
       state.error = null;
       state.successMessage = null;
     },
-    setAuthUser: (state, action) => {
+    setAuthUser: (state, action: PayloadAction<AuthUser>) => {
       state.user = action.payload;
-      state.isAuthenticated = !!action.payload;
     },
   },
   extraReducers: (builder) => {
-    const loading = (state) => {
+    const loading = (state: AuthState) => {
       state.loading = true;
       state.error = null;
       state.successMessage = null;
     };
 
-    const failed = (state, action) => {
+    const failed = (state: AuthState, action: PayloadAction<any>) => {
       state.loading = false;
       state.error = action.payload;
     };
 
     builder
-      // Login
       .addCase(loginUser.pending, loading)
       .addCase(loginUser.fulfilled, (state) => {
         state.loading = false;
@@ -178,7 +164,6 @@ const authSlice = createSlice({
       })
       .addCase(loginUser.rejected, failed)
 
-      // Register
       .addCase(registerUser.pending, loading)
       .addCase(registerUser.fulfilled, (state, action) => {
         state.loading = false;
@@ -186,7 +171,6 @@ const authSlice = createSlice({
       })
       .addCase(registerUser.rejected, failed)
 
-      // Change Password
       .addCase(changePassword.pending, loading)
       .addCase(changePassword.fulfilled, (state, action) => {
         state.loading = false;
@@ -194,7 +178,6 @@ const authSlice = createSlice({
       })
       .addCase(changePassword.rejected, failed)
 
-      // Reset Password
       .addCase(resetPassword.pending, loading)
       .addCase(resetPassword.fulfilled, (state, action) => {
         state.loading = false;
@@ -202,7 +185,6 @@ const authSlice = createSlice({
       })
       .addCase(resetPassword.rejected, failed)
 
-      // Forgot Password
       .addCase(forgotPassword.pending, loading)
       .addCase(forgotPassword.fulfilled, (state, action) => {
         state.loading = false;
@@ -210,31 +192,13 @@ const authSlice = createSlice({
       })
       .addCase(forgotPassword.rejected, failed)
 
-      // Logout
       .addCase(logoutUser.pending, loading)
       .addCase(logoutUser.fulfilled, (state, action) => {
         state.loading = false;
         state.user = null;
-        state.isAuthenticated = false;
         state.successMessage = action.payload.message;
       })
-      .addCase(logoutUser.rejected, failed)
-
-      // Fetch Current User
-      .addCase(fetchCurrentUser.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(fetchCurrentUser.fulfilled, (state, action) => {
-        state.loading = false;
-        state.user = action.payload;
-        state.isAuthenticated = true;
-      })
-      .addCase(fetchCurrentUser.rejected, (state) => {
-        state.loading = false;
-        state.user = null;
-        state.isAuthenticated = false;
-      });
+      .addCase(logoutUser.rejected, failed);
   },
 });
 

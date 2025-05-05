@@ -6,20 +6,27 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+
   body {
     font-family: 'Arial', sans-serif;
-    background: ${({ theme }) => theme.colors.body};
+    background-color: ${({ theme }) => theme.colors.background}; 
     color: ${({ theme }) => theme.colors.text};
-    transition: all 0.25s linear;
-  }
+    transition: background-color 0.25s linear, color 0.25s linear;
+    min-height: 100vh; 
 
   a {
     text-decoration: none;
-    color: ${({ theme }) => theme.colors.text};
+    color: ${({ theme }) => theme.colors.link || theme.colors.text};
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: ${({ theme }) => theme.colors.primary || theme.colors.text};
+    }
   }
 
   button {
     cursor: pointer;
+    font-family: inherit;
   }
 `
 
