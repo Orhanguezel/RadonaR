@@ -1,0 +1,2402 @@
+{
+	"info": {
+		"_postman_id": "5c3b9bd4-1cf6-445e-85da-96706a427be5",
+		"name": "RadonaRTestler",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "20528167",
+		"_collection_link": "https://www.postman.com/red-eclipse-24199/workspace/orhan/collection/20528167-5c3b9bd4-1cf6-445e-85da-96706a427be5?action=share&source=collection_link&creator=20528167"
+	},
+	"item": [
+		{
+			"name": "product",
+			"item": [
+				{
+					"name": "📦 Get All Products",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{url-ensotek}}/products"
+					},
+					"response": []
+				},
+				{
+					"name": "📦 Get Product By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{url-ensotek}}/products/67f42c4e44a279769484c4e1"
+					},
+					"response": []
+				},
+				{
+					"name": "➕ Create Product (Admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Lithium",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Lithium Orotate ist eine sanfte Form von Lithium, die häufig zur Unterstützung emotionaler Ausgeglichenheit, mentaler Klarheit und als Stimmungsstabilisator genutzt wird. Dieses vegane Produkt enthält 131 mg Lithiumorotat pro Tablette, davon 5 mg elementares Lithium.",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "21.90",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "75",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "67fd2aef02ceb6cf5cb88eb2",
+									"type": "text"
+								},
+								{
+									"key": "tags",
+									"value": "lithium, orotat, nerven, stimmung, stabilität",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/orhan/Desktop/WhatsApp Image 2025-04-07 at 9.24.49 PM.jpeg"
+								}
+							]
+						},
+						"url": "{{url-ensotek}}/products"
+					},
+					"response": []
+				},
+				{
+					"name": "✏️ Update Product (Admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Lavendelöl",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "149.90",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/orhan/Desktop/web-Logo.png"
+								},
+								{
+									"key": "description",
+									"value": "Natürliches ätherisches Öl",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "6802e18d96c2790137cc65f6",
+									"type": "text"
+								},
+								{
+									"key": "tags",
+									"value": "beruhigend, bio, vegan",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{url-ensotek}}/products/680392000bc4a84539759b7c"
+					},
+					"response": []
+				},
+				{
+					"name": "🗑️ Delete Product (Admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"type": "text"
+							}
+						],
+						"url": "{{url-ensotek}}/products/67f9ab399feeaf720cd5bd74"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cart",
+			"item": [
+				{
+					"name": "🛍️ Get User Cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"type": "text"
+							}
+						],
+						"url": "{{url-ensotek}}cart"
+					},
+					"response": []
+				},
+				{
+					"name": "➕ Add To Cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"productId\": \"67f090c62cebb3485b728f9d\",\n  \"quantity\": 2\n}"
+						},
+						"url": "{{url-ensotek}}/cart/add"
+					},
+					"response": []
+				},
+				{
+					"name": "🔼 Increase Quantity",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"type": "text"
+							}
+						],
+						"url": "{{url-ensotek}}cart/increase/67f42c4e44a279769484c4e1"
+					},
+					"response": []
+				},
+				{
+					"name": "🔽 Decrease Quantity",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"type": "text"
+							}
+						],
+						"url": "{{url-ensotek}}/cart/decrease/{{productId}}"
+					},
+					"response": []
+				},
+				{
+					"name": "❌ Remove Product from Cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"type": "text"
+							}
+						],
+						"url": "{{url-ensotek}}/cart/remove/67f02ea6feb2056a7836d119"
+					},
+					"response": []
+				},
+				{
+					"name": "🧹 Clear Cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"type": "text"
+							}
+						],
+						"url": "{{url-ensotek}}/cart/clear"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "order",
+			"item": [
+				{
+					"name": "Create Order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"items\": [\n    {\n      \"product\": \"67fdb0647fab36212e4999d0\",\n      \"quantity\": 21\n    }\n  ],\n \"shippingAddress\": {\n    \"name\": \"Orhan\",\n    \"email\": \"orhan@example.com\",\n    \"phone\": \"1234567890\",      // <== GÖNDERİLMELİ\n    \"street\": \"Musterstraße 1\",\n    \"city\": \"Berlin\",\n    \"postalCode\": \"10115\",\n    \"country\": \"Germany\"\n  },\n  \"totalPrice\": 299.98\n}"
+						},
+						"url": "{{url-ensotek}}/orders"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"type": "text"
+							}
+						],
+						"url": "{{url-ensotek}}orders"
+					},
+					"response": []
+				},
+				{
+					"name": "Mark Order as Delivered",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"type": "text"
+							}
+						],
+						"url": "{{url-ensotek}}orders/67f191100685b64e9e42dfba/deliver"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Order Status",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"isDelivered\": true\n}"
+						},
+						"url": "{{url-ensotek}}orders/67f191100685b64e9e42dfba/status"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "notification",
+			"item": [
+				{
+					"name": "📥 Create Notification",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Yeni Hizmet Eklendi\",\n  \"message\": \"Admin paneline yeni bir hizmet başarıyla eklendi.\",\n  \"type\": \"success\",\n  \"user\": null\n}\n"
+						},
+						"url": "{{url-ensotek}}/notifications"
+					},
+					"response": []
+				},
+				{
+					"name": "📬 Get My Notifications",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"type": "text"
+							}
+						],
+						"url": "{{url-ensotek}}/notifications"
+					},
+					"response": []
+				},
+				{
+					"name": "✅ Mark Notification As Read",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"type": "text"
+							}
+						],
+						"url": "{{url-ensotek}}/notifications/67f064930aeb941c62b4a11b/read"
+					},
+					"response": []
+				},
+				{
+					"name": "🗑️ Delete Notification",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"type": "text"
+							}
+						],
+						"url": "{{url-ensotek}}/notifications/67f064e00aeb941c62b4a126"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "contact",
+			"item": [
+				{
+					"name": "📨 Send Contact Message",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Jane Doedddddd\",\n  \"email\": \"jane@example.com\",\n  \"subject\": \"Soru\",\n  \"message\": \"Randevu saatleri hakk\\u0131nda bilgi almak istiyorum.\"\n}"
+						},
+						"url": "{{url-ensotek}}/contacts"
+					},
+					"response": []
+				},
+				{
+					"name": "🔐 Get All Contact Messages (Admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"type": "text"
+							}
+						],
+						"url": "{{url-ensotek}}/contacts"
+					},
+					"response": []
+				},
+				{
+					"name": "❌ Delete Contact Message (Admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"type": "text"
+							}
+						],
+						"url": "{{url-ensotek}}/contact/{{messageId}}"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "gallery",
+			"item": [
+				{
+					"name": "🖼️ Upload Image (Admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": [
+										"postman-cloud:///1f011d1c-63ed-4910-ba94-594de9b68c69",
+										{
+											"actual": null,
+											"name": "",
+											"path": ""
+										},
+										"/home/orhan/Dokumente/anastasiaMassage/anastasia-frontend/public/logo-dark.png"
+									]
+								}
+							]
+						},
+						"url": "{{url-ensotek}}/gallery/upload"
+					},
+					"response": []
+				},
+				{
+					"name": "📂 Get All Gallery Items (Public)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{url-ensotek}}/gallery"
+					},
+					"response": []
+				},
+				{
+					"name": "🗑️ Delete Gallery Item (Admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"type": "text"
+							}
+						],
+						"url": "{{url-ensotek}}/gallery/67f071164655fb348727b089"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "faq",
+			"item": [
+				{
+					"name": "📄 Get All FAQs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{url-ensotek}}/faqs"
+					},
+					"response": []
+				},
+				{
+					"name": "➕ Create FAQ",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"question\": \"Masajdan \\u00f6nce yemek yemeli miyim?\",\n  \"answer\": \"Masajdan en az 1 saat \\u00f6nce yemek yememeniz \\u00f6nerilir.\",\n  \"category\": \"Genel\"\n}"
+						},
+						"url": "{{url-ensotek}}/faqs"
+					},
+					"response": []
+				},
+				{
+					"name": "🗑️ Delete FAQ",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"type": "text"
+							}
+						],
+						"url": "{{url-ensotek}}/faqs/67f0781f796b5aea2318051a"
+					},
+					"response": []
+				},
+				{
+					"name": "Ask Faq",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"question\": \"Was ist eine Kühlanlage?\",\n  \"language\": \"de\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url-ensotek}}/faqs/ask"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "payment",
+			"item": [
+				{
+					"name": "🧾 Create Payment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"order\": \"67f095d0ef9f7cf62289e4d1\",\n  \"amount\": 249.9,\n  \"method\": \"credit_card\"\n}"
+						},
+						"url": "{{url-ensotek}}/payments"
+					},
+					"response": []
+				},
+				{
+					"name": "📄 Get All Payments (Admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"type": "text"
+							}
+						],
+						"url": "{{url-ensotek}}/payments"
+					},
+					"response": []
+				},
+				{
+					"name": "🔍 Get Payment by Order ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"type": "text"
+							}
+						],
+						"url": "{{url-ensotek}}/payments/order/67f095d0ef9f7cf62289e4d1"
+					},
+					"response": []
+				},
+				{
+					"name": "✅ Mark Payment as Paid",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"type": "text"
+							}
+						],
+						"url": "{{url-ensotek}}/payments/{{paymentId}}/mark-paid"
+					},
+					"response": []
+				},
+				{
+					"name": "simulasyon",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "javascript"
+								}
+							}
+						},
+						"url": "{{url-ensotek}}payments/simulate/stripe"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "dashboard-admin",
+			"item": [
+				{
+					"name": "Dashboard- Log Api",
+					"item": [
+						{
+							"name": "Logs by Date Range",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"// Otomatik olarak accessToken'ı ekle",
+											"const token = pm.environment.get(\"accessToken\");",
+											"if (token) {",
+											"    pm.request.headers.add({ key: \"Cookie\", value: `accessToken=${token}` });",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "https://api.guezelwebdesign.com/api/dashboard/logs?startDate=2025-04-01&endDate=2025-04-30",
+									"protocol": "https",
+									"host": [
+										"api",
+										"guezelwebdesign",
+										"com"
+									],
+									"path": [
+										"api",
+										"dashboard",
+										"logs"
+									],
+									"query": [
+										{
+											"key": "startDate",
+											"value": "2025-04-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2025-04-30"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Logs: Last 5",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"// Otomatik olarak accessToken'ı ekle",
+											"const token = pm.environment.get(\"accessToken\");",
+											"if (token) {",
+											"    pm.request.headers.add({ key: \"Cookie\", value: `accessToken=${token}` });",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5015/api/dashboard/logs?limit=5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5015",
+									"path": [
+										"api",
+										"dashboard",
+										"logs"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Logs by Event Type: create",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"// Otomatik olarak accessToken'ı ekle",
+											"const token = pm.environment.get(\"accessToken\");",
+											"if (token) {",
+											"    pm.request.headers.add({ key: \"Cookie\", value: `accessToken=${token}` });",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5015/api/dashboard/logs?eventType=create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5015",
+									"path": [
+										"api",
+										"dashboard",
+										"logs"
+									],
+									"query": [
+										{
+											"key": "eventType",
+											"value": "create"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Logs by Module: products",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"// Otomatik olarak accessToken'ı ekle",
+											"const token = pm.environment.get(\"accessToken\");",
+											"if (token) {",
+											"    pm.request.headers.add({ key: \"Cookie\", value: `accessToken=${token}` });",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5015/api/dashboard/logs?module=products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5015",
+									"path": [
+										"api",
+										"dashboard",
+										"logs"
+									],
+									"query": [
+										{
+											"key": "module",
+											"value": "products"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Logs",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"// Otomatik olarak accessToken'ı ekle",
+											"const token = pm.environment.get(\"accessToken\");",
+											"if (token) {",
+											"    pm.request.headers.add({ key: \"Cookie\", value: `accessToken=${token}` });",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": "http://localhost:5015/api/dashboard/logs"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "📈 Get Admin Dashboard Stats",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"type": "text"
+							}
+						],
+						"url": "{{url-ensotek}}/dashboard"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "notification",
+			"item": [
+				{
+					"name": "📬 Create Notification",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Yeni Randevu Bildirimi\",\n  \"message\": \"Yeni bir randevu talebi alındı.\"\n}"
+						},
+						"url": "{{url-ensotek}}/notifications"
+					},
+					"response": []
+				},
+				{
+					"name": "📋 Get All Notifications",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"type": "text"
+							}
+						],
+						"url": "{{url-ensotek}}/notifications"
+					},
+					"response": []
+				},
+				{
+					"name": "❌ Delete Notification",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"type": "text"
+							}
+						],
+						"url": "{{url-ensotek}}/notifications/67f09b300f90ec55b0236fa0"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "category",
+			"item": [
+				{
+					"name": "🟢 Create Category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Massagee1\",\n  \"description\": \"Klassische Massage Kategorie\"\n}"
+						},
+						"url": "{{url-ensotek}}/categories"
+					},
+					"response": []
+				},
+				{
+					"name": "📄 Get All Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{url-ensotek}}/categories"
+					},
+					"response": []
+				},
+				{
+					"name": "🔄 Update Category",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Massage Therapie\",\n  \"description\": \"Aktualisierte Beschreibung\"\n}"
+						},
+						"url": "{{url-ensotek}}categories/67fd2aef02ceb6cf5cb88eb2"
+					},
+					"response": []
+				},
+				{
+					"name": "🗑️ Delete Category",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{url-ensotek}}categories/67fd2b3002ceb6cf5cb88eba"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "email",
+			"item": [
+				{
+					"name": "📥 Get All Emails (Admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"type": "text"
+							}
+						],
+						"url": "{{url-ensotek}}/emails"
+					},
+					"response": []
+				},
+				{
+					"name": "🔍 Get Email by ID (Admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"type": "text"
+							}
+						],
+						"url": "{{url-ensotek}}/emails/660e8fa71234567890abcdef"
+					},
+					"response": []
+				},
+				{
+					"name": "🗑️ Delete Email (Admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"type": "text"
+							}
+						],
+						"url": "{{url-ensotek}}/emails/67f14e8bc6e327e48321ca5b"
+					},
+					"response": []
+				},
+				{
+					"name": "📤 Send Email (Admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"to\": \"orhanguzell@gmail.com\",\n  \"subject\": \"Terminbestätigung\",\n  \"message\": \"<h2>Ihr Termin ist bestätigt ✅</h2><p>Vielen Dank für Ihre Buchung bei <strong>Anastasia Massage</strong>.</p><p>Wir freuen uns auf Ihren Besuch!</p><p>🕓 Terminzeit: 10. April 2025 - 14:00 Uhr</p><br><p>Mit freundlichen Grüßen,<br>Ihr Anastasia Team</p>\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url-ensotek}}/emails/send"
+					},
+					"response": []
+				},
+				{
+					"name": "📥 Fetch Incoming Emails (Manual)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"type": "text"
+							}
+						],
+						"url": "{{url-ensotek}}/emails/fetch"
+					},
+					"response": []
+				},
+				{
+					"name": "📌 Mark Email as Read",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"isRead\": true\n}"
+						},
+						"url": "{{url-ensotek}}/emails/{{emailId}}/read"
+					},
+					"response": []
+				},
+				{
+					"name": "📌 Mark Email as Unread",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"isRead\": false\n}"
+						},
+						"url": "{{url-ensotek}}/emails/{{emailId}}/read"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "service",
+			"item": [
+				{
+					"name": "➕ Create New Service",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Reflexzon",
+									"type": "text"
+								},
+								{
+									"key": "shortDescription",
+									"value": "Gezielte Druckmassage für innere Organe",
+									"type": "text"
+								},
+								{
+									"key": "detailedDescription",
+									"value": "Reflexzonenmassage aktiviert körpereigene Heilkräfte durch gezielten Druck auf Fußreflexzonen.",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "149.90",
+									"type": "text"
+								},
+								{
+									"key": "durationMinutes",
+									"value": "50",
+									"type": "text"
+								},
+								{
+									"key": "isActive",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": "/path/to/image1.jpg"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": "/path/to/image2.jpg"
+								}
+							]
+						},
+						"url": "{{url-ensotek}}/services"
+					},
+					"response": []
+				},
+				{
+					"name": "📋 Get All Services (Public)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{url-ensotek}}/services"
+					},
+					"response": []
+				},
+				{
+					"name": "🔍 Get Service by ID (Public)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{url-ensotek}}/services/67fd2bfcada8fb89979a3368"
+					},
+					"response": []
+				},
+				{
+					"name": "✏️ Update Service",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Aromatherapie Massage",
+									"type": "text"
+								},
+								{
+									"key": "shortDescription",
+									"value": "Entspannende Aromatherapie mit ätherischen Ölen",
+									"type": "text"
+								},
+								{
+									"key": "detailedDescription",
+									"value": "Diese Massage nutzt natürliche ätherische Öle zur Beruhigung und Regeneration von Körper und Geist.",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "199.90",
+									"type": "text"
+								},
+								{
+									"key": "durationMinutes",
+									"value": "60",
+									"type": "text"
+								},
+								{
+									"key": "isActive",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": "/path/to/image3.jpg"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": "/path/to/image4.jpg"
+								}
+							]
+						},
+						"url": "{{url-ensotek}}/services/67fd2bfcada8fb89979a3368"
+					},
+					"response": []
+				},
+				{
+					"name": "🗑️ Delete Service",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"type": "text"
+							}
+						],
+						"url": "{{url-ensotek}}/services/67f127931c458d19966c4c64"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Auth Routes",
+					"item": [
+						{
+							"name": "Logout",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": "{{url-ensotek}}/auth/logout"
+							},
+							"response": []
+						},
+						{
+							"name": "Reset Password",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"newPassword\": \"NewPass123!\"\n}"
+								},
+								"url": "{{url-ensotek}}/auth/reset-password/{{token}}"
+							},
+							"response": []
+						},
+						{
+							"name": "Forgot Password",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"testuser@example.com\"\n}"
+								},
+								"url": "{{url-ensotek}}/auth/forgot-password"
+							},
+							"response": []
+						},
+						{
+							"name": "Change Password",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"currentPassword\": \"Test1234!\",\n  \"newPassword\": \"NewPass123!\"\n}"
+								},
+								"url": "{{url-ensotek}}/auth/change-password"
+							},
+							"response": []
+						},
+						{
+							"name": "Login User",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": {
+										"value": "d91c5f6e6bb7320d7b978c033aadb5f1b298079b8a58b3226f843c9304e740bf",
+										"key": "x-api-key"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"orhanguzell@gmail.com\",\n  \"password\": \"Kaman@12!\"\n}"
+								},
+								"url": "{{url-ensotek}}/users/login"
+							},
+							"response": []
+						},
+						{
+							"name": "Register User",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Test User2\",\n  \"email\": \"testuser3@example.com\",\n  \"password\": \"Test1234!\"\n}"
+								},
+								"url": "{{url-ensotek}}/users/register"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Address Routes",
+					"item": [
+						{
+							"name": "❌ Delete Address",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{url-ensotek}}/address/:id",
+									"host": [
+										"{{url-ensotek}}"
+									],
+									"path": [
+										"address",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "✏️ Update Address",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"street\": \"Neue Strasse\",\n  \"houseNumber\": \"34b\",\n  \"city\": \"Hamburg\",\n  \"zipCode\": \"20095\"\n}"
+								},
+								"url": {
+									"raw": "{{url-ensotek}}/address/:id",
+									"host": [
+										"{{url-ensotek}}"
+									],
+									"path": [
+										"address",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "🔍 Get Address by ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{url-ensotek}}/address/:id",
+									"host": [
+										"{{url-ensotek}}"
+									],
+									"path": [
+										"address",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "➕ Create Address",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": {
+										"value": "b8d19fb293a646cef884f3a8bcce6e4282657b7bd6280a19df1792a5be8e3c2c",
+										"key": "x-api-key"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"street\": \"Musterstra\\u00dfe\",\n  \"houseNumber\": \"12a\",\n  \"city\": \"Berlin\",\n  \"zipCode\": \"10115\"\n}"
+								},
+								"url": "{{url-ensotek}}/address"
+							},
+							"response": []
+						},
+						{
+							"name": "📍 Get All Addresses",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": {
+										"value": "b8d19fb293a646cef884f3a8bcce6e4282657b7bd6280a19df1792a5be8e3c2c",
+										"key": "x-api-key"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": "http://localhost:5014/api/users/account/me/addresses"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Crud Routes",
+					"item": [
+						{
+							"name": "Get All Users",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": "{{url-ensotek}}/users/users"
+							},
+							"response": []
+						},
+						{
+							"name": "Get User By ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url-ensotek}}/users/:id",
+									"host": [
+										"{{url-ensotek}}"
+									],
+									"path": [
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update User",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "John Updated",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "updated@example.com",
+											"type": "text"
+										},
+										{
+											"key": "role",
+											"value": "admin",
+											"type": "text"
+										},
+										{
+											"key": "isActive",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "111111111",
+											"type": "text"
+										},
+										{
+											"key": "bio",
+											"value": "Updated bio",
+											"type": "text"
+										},
+										{
+											"key": "birthDate",
+											"value": "1985-08-20",
+											"type": "text"
+										},
+										{
+											"key": "socialMedia",
+											"value": "{\"facebook\":\"fb.com/updated\"}",
+											"type": "text"
+										},
+										{
+											"key": "notifications",
+											"value": "{\"emailNotifications\":true}",
+											"type": "text"
+										},
+										{
+											"key": "addresses",
+											"value": "[{\"street\":\"X\",\"city\":\"Y\"}]",
+											"type": "text"
+										},
+										{
+											"key": "profileImage",
+											"type": "file",
+											"src": "{{imageFile}}"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url-ensotek}}/users/:id",
+									"host": [
+										"{{url-ensotek}}"
+									],
+									"path": [
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url-ensotek}}/users/:id",
+									"host": [
+										"{{url-ensotek}}"
+									],
+									"path": [
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Account Routes",
+					"item": [
+						{
+							"name": "📄 Get Current Profile",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": {
+										"value": "b8d19fb293a646cef884f3a8bcce6e4282657b7bd6280a19df1792a5be8e3c2c",
+										"key": "x-api-key"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "{{url-ensotek}}/account/me"
+							},
+							"response": []
+						},
+						{
+							"name": "✏️ Update Profile",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Orhan Updated\",\n  \"email\": \"orhan@example.com\",\n  \"phone\": \"+491234567890\",\n  \"language\": \"de\"\n}"
+								},
+								"url": "{{url-ensotek}}/account/me/update"
+							},
+							"response": []
+						},
+						{
+							"name": "🔐 Update Password",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"currentPassword\": \"newpass123\",\n  \"newPassword\": \"Kaman@12!\"\n}"
+								},
+								"url": "{{url-ensotek}}/account/me/password"
+							},
+							"response": []
+						},
+						{
+							"name": "🔔 Update Notifications",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"emailNotifications\": true,\n  \"smsNotifications\": false\n}"
+								},
+								"url": "http://localhost:5015/api/account/me/notifications"
+							},
+							"response": []
+						},
+						{
+							"name": "🌐 Update Social Media",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"facebook\": \"https://facebook.com/orhan\",\n  \"instagram\": \"https://instagram.com/orhan\",\n\t\"twitter\": \"https://www.twitter.com/orhan\"\n\n}"
+								},
+								"url": "http://localhost:5015/api/account/me/social"
+							},
+							"response": []
+						},
+						{
+							"name": "🖼 Upload Profile Image",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "profileImage",
+											"type": "file",
+											"src": "postman-cloud:///1f011d1c-8a46-4760-b40d-ed20b81d40bd"
+										}
+									]
+								},
+								"url": "{{url-ensotek}}/users/account/me/profile-image"
+							},
+							"response": []
+						},
+						{
+							"name": "📬 Update All Addresses",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"addresses\": [\n    {\n      \"street\": \"Teststraße\",\n      \"houseNumber\": \"1\",\n      \"city\": \"Berlin\",\n      \"zipCode\": \"10115\"\n    },\n    {\n      \"street\": \"Musterweg\",\n      \"houseNumber\": \"2\",\n      \"city\": \"Köln\",\n      \"zipCode\": \"50667\"\n    }\n  ]\n}"
+								},
+								"url": "{{url-ensotek}}/account/me/addresses"
+							},
+							"response": []
+						},
+						{
+							"name": "❌ Delete Account",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"password\": \"newpass123\"\n}"
+								},
+								"url": "{{url-ensotek}}/auth/delete"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Status Routes",
+					"item": [
+						{
+							"name": "(Aktiv/Pasiv)",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": "{{url-ensotek}}/users/USER_ID/status"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Role",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"role\": \"admin\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url-ensotek}}/users/USER_ID/role"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"project\": \"metahub\",\n  \"enabled\": true,\n  \"label\": \"Forum\",\n  \"icon\": \"message-circle\",\n  \"language\": \"tr\",\n  \"visibleInSidebar\": true,\n  \"useAnalytics\": true\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url-ensotek}}/admin/modules/forum"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Module",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "{{url-ensotek}}/users/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Analitics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{url-ensotek}}/admin/modules/analytics"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Setting",
+			"item": [
+				{
+					"name": "🆕 Create/Update Setting (Basic String)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"key\": \"site_template\",\n    \"value\": \"modern\"\n}"
+						},
+						"url": "http://localhost:5014/api/setting"
+					},
+					"response": []
+				},
+				{
+					"name": "🆕 Create/Update Setting (Multi Lang Object)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"key\": \"footer_rights\",\n    \"value\": {\n        \"tr\": \"Tüm hakları saklıdır.\",\n        \"en\": \"All rights reserved.\",\n        \"de\": \"Alle Rechte vorbehalten.\"\n    }\n}"
+						},
+						"url": "http://localhost:5014/api/setting"
+					},
+					"response": []
+				},
+				{
+					"name": "🆕 Create/Update Setting (Array - available_themes)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"key\": \"available_themes\",\n    \"value\": [\"classic\", \"modern\", \"minimal\"]\n}"
+						},
+						"url": "http://localhost:5014/api/setting"
+					},
+					"response": []
+				},
+				{
+					"name": "🆕 Create/Update Setting (Nested Object - footer_contact)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"key\": \"footer_contact\",\n    \"value\": {\n        \"phone\": {\n            \"tr\": \"012345678\",\n            \"en\": \"012345678\",\n            \"de\": \"012345678\"\n        },\n        \"email\": {\n            \"tr\": \"info@example.com\",\n            \"en\": \"info@example.com\",\n            \"de\": \"info@example.com\"\n        },\n        \"welcome\": {\n            \"tr\": \"Bize ulaşın\",\n            \"en\": \"Contact us\",\n            \"de\": \"Kontaktieren Sie uns\"\n        }\n    }\n}"
+						},
+						"url": "http://localhost:5014/api/setting"
+					},
+					"response": []
+				},
+				{
+					"name": "🆕 Create/Update Setting (Nested Object - footer_social_links)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"key\": \"footer_social_links\",\n    \"value\": {\n        \"facebook\": {\n            \"tr\": \"https://www.facebook.com/ensotek\",\n            \"en\": \"https://www.facebook.com/ensotek\",\n            \"de\": \"https://www.facebook.com/ensotek\"\n        },\n        \"instagram\": {\n            \"tr\": \"https://www.instagram.com/ensotek\",\n            \"en\": \"https://www.instagram.com/ensotek\",\n            \"de\": \"https://www.instagram.com/ensotek\"\n        },\n        \"linkedin\": {\n            \"tr\": \"https://www.linkedin.com/company/ensotek\",\n            \"en\": \"https://www.linkedin.com/company/ensotek\",\n            \"de\": \"https://www.linkedin.com/company/ensotek\"\n        }\n    }\n}"
+						},
+						"url": "http://localhost:5014/api/setting"
+					},
+					"response": []
+				},
+				{
+					"name": "🔎 Get All Settings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5014/api/setting"
+					},
+					"response": []
+				},
+				{
+					"name": "🔎 Get Setting by Key",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5014/api/setting/footer_contact"
+					},
+					"response": []
+				},
+				{
+					"name": "🗑️ Delete Setting by Key",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5014/api/setting/footer_contact"
+					},
+					"response": []
+				},
+				{
+					"name": "🖼️ Upload Setting Image (POST)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": [
+										"",
+										"/home/orhan/Desktop/profil2.png"
+									]
+								}
+							]
+						},
+						"url": "http://localhost:5014/api/setting/upload/footer_logo"
+					},
+					"response": []
+				},
+				{
+					"name": "🖼️ Update Setting Image (PUT)",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"value": "",
+									"type": "file"
+								}
+							]
+						},
+						"url": "http://localhost:5014/api/setting/upload/footer_logo"
+					},
+					"response": []
+				},
+				{
+					"name": "Create/Update Setting (Nested Object - navbar_main_links)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"key\": \"navbar_main_links\",\n  \"value\": {\n    \"home\": {\n      \"label\": { \"tr\": \"Anasayfa\", \"en\": \"Home\", \"de\": \"Startseite\" },\n      \"href\": \"/\"\n    },\n    \"solutions\": {\n      \"label\": { \"tr\": \"Çözümler\", \"en\": \"Solutions\", \"de\": \"Lösungen\" },\n      \"href\": \"/visitor/solutions\"\n    },\n    \"about\": {\n      \"label\": { \"tr\": \"Hakkımızda\", \"en\": \"About Us\", \"de\": \"Über uns\" },\n      \"href\": \"/visitor/about\"\n    },\n    \"contact\": {\n      \"label\": { \"tr\": \"İletişim\", \"en\": \"Contact\", \"de\": \"Kontakt\" },\n      \"href\": \"/visitor/contact\"\n    }\n  }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5014/api/setting"
+					},
+					"response": []
+				},
+				{
+					"name": "Create/Update Setting (Nested Object - navbar_special_link)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "http://localhost:5014/api/setting"
+					},
+					"response": []
+				},
+				{
+					"name": "Create/Update Setting (Nested Object -navbar_social_links)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "http://localhost:5014/api/setting"
+					},
+					"response": []
+				},
+				{
+					"name": "Create/Update Setting (Nested Object -navbar_contact)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"key\": \"navbar_contact\",\n  \"value\": {\n    \"phone\": \"+49 1764 1107158\"\n  }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5014/api/setting"
+					},
+					"response": []
+				},
+				{
+					"name": "Create/Update Setting (Nested Object -navbar_logo_text)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"key\": \"navbar_logo_text\",\n  \"value\": {\n    \"title\": {\n      \"tr\": \"Retroy\",\n      \"en\": \"Retroy\",\n      \"de\": \"Retroy\"\n    },\n    \"slogan\": {\n      \"tr\": \"Kaliteyi Yansıtır\",\n      \"en\": \"Reflects Quality\",\n      \"de\": \"Spiegelt Qualität wider\"\n    }\n  }\n}\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5014/api/setting"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Navbar Logo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"key\": \"navbar_logos\",\n  \"value\": {\n    \"light\": \"logo_light.png\",\n    \"dark\": \"logo_dark.png\"\n  }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}api/setting"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Navbar Logo",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer ",
+								"type": "text"
+							}
+						],
+						"url": "{{base_url}}/api/setting/navbar-logos/logo_1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "apikey",
+			"item": [
+				{
+					"name": "➕ Create API Key",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Test Key\"\n}"
+						},
+						"url": "https://api.guezelwebdesign.com/api/apikey"
+					},
+					"response": []
+				},
+				{
+					"name": "📝 Get All API Keys",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5014/api/apikey"
+					},
+					"response": []
+				},
+				{
+					"name": "🔐 Protected Ping (with x-api-key)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "1279ef56ab164e4d2f72965b01ba2d8904b5a2ba375cef8a08610b92f52b28c9"
+							}
+						],
+						"url": "http://localhost:5014/api/demo/ping"
+					},
+					"response": []
+				},
+				{
+					"name": "Api Key Log",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5014/api/apikey/6811fb89814bf60a64749860/logs"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "url-ensotek",
+			"value": "http://localhost:5015"
+		}
+	]
+}
