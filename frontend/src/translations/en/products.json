@@ -1,0 +1,8 @@
+{
+    "title": "Our Products",
+    "add_to_cart_disabled": "Add to Cart (Login Required)",
+    "detail_title": "Product Details (ID: {{id}})",
+    "detail_description": "Detailed information about the product will be shown here."
+  }
+  
+  

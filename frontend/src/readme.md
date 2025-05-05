@@ -1,7 +1,7 @@
 
 ---
 
-## 📄 **README.md (Deutsch)**
+## 📄 **README.md**
 
 ```md
 # 🚲 Bike Commerce Frontend
