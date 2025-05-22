@@ -1,0 +1,14 @@
+{
+  "appName": "RadAnOr",
+  "nav": {
+    "about": "About",
+    "bikes": "Bikes",
+    "home": "Home",
+    "stories": "Stories"
+  },
+  "searchPlaceholder": "Search...",
+  "languageSelector": {
+    "english": "English",
+    "german": "Deutsch"
+  }
+}

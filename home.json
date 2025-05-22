@@ -1,0 +1,48 @@
+
+{
+  "loader": {
+    "welcome": "Welcome!",
+    "counter_3": "3",
+    "counter_2": "2",
+    "counter_1": "1",
+    "counter_and_1": "an",
+    "counter_and_2": "d",
+    "counter_go_1": "G",
+    "counter_go_2": "O!"
+  },
+  "hero": {
+    "line1_part1": "Rooted",
+    "line1_part2": "in passion,",
+    "line2_part1": "grown with",
+    "line2_part2": "strength.",
+    "subtext": "Bikes created with passion for lovers of two wheels.",
+    "cta": "View all products",
+    "altImage": "Mountain landscape with bikes"
+  },
+  "slider": {
+    "slide1_title": "Racing Bike",
+    "slide1_desc": "Fast and agile.",
+    "slide1_alt": "Racing bike on a scenic road",
+    "slide2_title": "Gravel Bike",
+    "slide2_desc": "For road and off-road adventures.",
+    "slide2_alt": "Gravel bike on a dirt path",
+    "slide3_title": "Mountain Bike",
+    "slide3_desc": "Classic Mountain bikes.",
+    "slide3_alt": "Mountain bike on a forest trail",
+    "slide4_title": "E-Bike",
+    "slide4_desc": "Power up your ride.",
+    "slide4_alt": "E-Bike in an urban setting",
+    "slide5_title": "Alltag Bike",
+    "slide5_desc": "Your everyday companion.",
+    "slide5_alt": "City bike parked on a street",
+    "slide6_title": "Nebula Point",
+    "slide6_desc": "Explore the unknown.",
+    "slide6_alt": "Conceptual bike design Nebula Point",
+    "slide7_title": "MTB-Fully Bike",
+    "slide7_desc": "Full suspension for tough trails.",
+    "slide7_alt": "MTB Fully bike on a mountain trail"
+  },
+  "footer": {
+    "sliderCounterOf": "/"
+  }
+}
